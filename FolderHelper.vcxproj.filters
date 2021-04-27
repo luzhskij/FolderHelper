@@ -40,6 +40,9 @@
     <ClCompile Include="coreconnector.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="folderview.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="folderhelper.h">
@@ -51,9 +54,15 @@
     <QtMoc Include="coreconnector.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+    <QtMoc Include="folderview.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="folderhelper.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="folderview.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>

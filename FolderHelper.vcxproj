@@ -91,6 +91,7 @@
     <ClCompile Include="coreconnector.cpp" />
     <ClCompile Include="core\folderhelp.cpp" />
     <ClCompile Include="folderhelper.cpp" />
+    <ClCompile Include="folderview.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -98,6 +99,7 @@
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="folderhelper.ui" />
+    <QtUic Include="folderview.ui" />
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="folderhelper.qrc" />
@@ -110,6 +112,9 @@
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="coreconnector.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="folderview.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
