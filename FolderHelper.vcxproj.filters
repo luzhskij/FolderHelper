@@ -23,6 +23,9 @@
       <Extensions>qrc;*</Extensions>
       <ParseFiles>false</ParseFiles>
     </Filter>
+    <Filter Include="core">
+      <UniqueIdentifier>{7acb6eda-3789-4b4f-8f6f-3b55bc470af4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -31,9 +34,21 @@
     <ClCompile Include="folderhelper.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="core\folderhelp.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="coreconnector.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="folderhelper.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="core\folderhelp.h">
+      <Filter>core</Filter>
+    </QtMoc>
+    <QtMoc Include="coreconnector.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
