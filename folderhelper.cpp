@@ -1,7 +1,5 @@
 #include "folderhelper.h"
 
-#include <boost/make_shared.hpp>
-
 #include <QFile>
 #include <QFileDialog>
 

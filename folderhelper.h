@@ -7,6 +7,7 @@
 #include "ui_folderhelper.h"
 
 #include <boost/shared_ptr.hpp>
+#include <boost/make_shared.hpp>
 #include <boost/scoped_ptr.hpp>
 
 #include "coreconnector.h"
