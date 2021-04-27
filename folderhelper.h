@@ -16,4 +16,19 @@ public:
 
 private:
 	Ui::FolderHelperClass ui;
+
+	boost::shared_ptr<CoreConnector> p_core_conn;
+
+
+	QString parent_folder;
+
+
+
+	void connect_slots();
+
+
+
+public slots:
+	void select_parent_folder();
+
 };
