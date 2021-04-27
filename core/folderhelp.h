@@ -8,6 +8,8 @@
 #include <filesystem>
 #include <iostream>
 
+#include <boost/filesystem.hpp>
+
 class slash_correcter
 {
 private:
@@ -72,6 +74,8 @@ public:
 	QStringList get_sub_dir_list(const QString& parent_dir, DirType drTp = ALL_DIRS);
 
 	qint64 get_folder_size(const QString& folderName);
+
+	bool delete_folder(const QString& fol_name);
 
 private:
 	slash_correcter* slash_cor;

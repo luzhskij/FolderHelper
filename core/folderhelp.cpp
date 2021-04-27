@@ -163,12 +163,19 @@ QStringList FolderHelp::get_sub_dir_list(const QString& parent_dir, DirType drTp
 	QString prntDir = parent_dir;
 	slash_cor_fixend(prntDir);
 
+	qint64 dirLenght = prntDir.length();
+
 	auto tmpList = get_directories(prntDir.toStdString());
 
 	QStringList dirList;
 	for (auto vp : tmpList) {
 		QString vpS = QString::fromStdString(vp);
 		slash_cor_fixend(vpS);
+
+		if (vpS.length() <= dirLenght) {
+			continue;
+		}
+
 		switch (drTp)
 		{
 		case ONLY_EMPTY:
@@ -241,10 +248,43 @@ std::vector<std::string> FolderHelp::get_directories(const std::string& s)
 
 qint64 FolderHelp::get_folder_size(const QString& folderName)
 {
-	QDirIterator it(folderName, QDirIterator::Subdirectories);
-	qint64 total(0);
-	while (it.hasNext()) {
-		total += it.fileInfo().size();
+	namespace bf = boost::filesystem;
+	size_t size = 0;
+	for (bf::recursive_directory_iterator it(folderName.toStdString());
+		it != bf::recursive_directory_iterator();
+		++it)
+	{
+		if (!bf::is_directory(*it))
+			size += bf::file_size(*it);
 	}
-	return total;
+
+	return static_cast<qint64>(size);
+
+	// 	QDirIterator it(folderName, QDirIterator::Subdirectories);
+	// 	qint64 total(0);
+	// 	while (it.hasNext()) {
+	// 		total += it.fileInfo().size();
+	// 	}
+	// 	return total;
+}
+
+bool FolderHelp::delete_folder(const QString& fol_name)
+{
+	try {
+		boost::filesystem::remove_all(fol_name.toStdString());
+		return true;
+	}
+	catch (boost::filesystem::filesystem_error const& e) {
+		std::string messg = e.what();
+
+		QByteArray msg2;
+		msg2 = QByteArray(messg.data(), int(messg.size()));
+		qDebug() << "Error del folder: " << fol_name << " |reason: " << msg2;
+		return false;
+	}
+	catch (...) {
+		QString messg = tr("_Error cleaning directory:\n%1");
+		qDebug() << messg.arg(fol_name);
+		return false;
+	}
 }
